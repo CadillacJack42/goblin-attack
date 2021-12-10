@@ -3,13 +3,21 @@ import { goblinArray } from './goblins.js';
 
 const goblinContainer = document.getElementById('goblin-container');
 
+const playerHpEl = document.getElementById('player-hp');
+
 const newGoblinBtn = document.getElementById('new-goblin-button');
+
+const deathToll = document.getElementById('death-toll');
+
+const combatReportEl = document.getElementById('combat-report');
 
 
 // let state
-const currentGoblins = [];
+let currentGoblins = [];
 
-const deadGoblins = 0;
+let deadGoblins = 0;
+
+let playerHp = 10;
 
 newGoblinBtn.addEventListener('click', () => {
     const nextGoblin = makeNewGoblin();
@@ -30,27 +38,38 @@ const renderStateChange = () => {
     for (const goblin of currentGoblins) {
         const newGoblinEl = renderGoblin(goblin);
         goblinContainer.append(newGoblinEl);
-        if (goblin.hp === 0) {
+        if (goblin.hp === 0 && goblin.alive) {
             killGoblin(goblin);
         }
     }
+    deathToll.textContent = deadGoblins;
 };
 
 const listenerGenerator = (holder, newGoblin) => {
     holder.style.cursor = 'pointer';
     
     holder.addEventListener('click', () => {
-        let hitCheck;
-        newGoblin.hp > 0 ? hitCheck = Math.random() : hitCheck = 0;
+        const hitCheck = Math.random();
         if (hitCheck >= .5) {
             newGoblin.hp--;
+            combatReport(true, newGoblin);
             renderStateChange();
+        } else {
+            playerTakeDamage();
+            combatReport(false, newGoblin);
         }
+        renderStateChange();
     });
 };
 
 const renderGoblin = (newGoblin) => {
     const holder = document.createElement('div');
+
+    if (!newGoblin.alive) {
+        holder.style.pointerEvents = 'none';
+        holder.style.opacity = '.2';
+    }
+
     const nameEl = document.createElement('p');
     const hpEl = document.createElement('p');
 
@@ -80,7 +99,7 @@ const makeNewGoblin = () => {
     const newGoblin = goblinArray[Math.ceil(Math.random() * 9)];
 
     let goblinTracker = currentGoblins.length + 1;
-    console.log(goblinTracker);
+    // console.log(goblinTracker);
 
     const goblinCopy = {
         ...newGoblin,
@@ -98,9 +117,33 @@ const makeNewGoblin = () => {
 };
 
 const killGoblin = (goblin) => {
-    const deadGoblin = document.getElementById(goblin.id);
-    deadGoblin.style.pointerEvents = 'none';
-    deadGoblin.style.opacity = '.2';
+    goblin.alive = false,
+    deadGoblins++;
+    const deathReport = `<p>You have KILLED ${goblin.name}</p>`
+    combatReportEl.insertAdjacentHTML('afterbegin', deathReport);
+};
+
+const playerTakeDamage = () => {
+    playerHp--;
+    playerHpEl.textContent = playerHp;
+    if (playerHp === 0) {
+        if (confirm('Game Over! Play Again?')) {
+            location.reload();
+        } else {
+            location.href = 'https://github.com/CadillacJack42/goblin-attack';
+        }
+    }
+};
+
+const combatReport = (bool, goblin) => {
+    const playerResult = `<p>You successfully attacked ${goblin.name}!</p>`;
+    const goblinResult = `<p>${goblin.name} successfully attacked you!</p>`;
+
+    if (bool) {
+        combatReportEl.insertAdjacentHTML('afterbegin', playerResult);
+    } else {
+        combatReportEl.insertAdjacentHTML('afterbegin', goblinResult);
+    }
 };
 
 

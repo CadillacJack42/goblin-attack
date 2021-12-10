@@ -200,3 +200,12 @@ footer {
     position: absolute;
     top: 95px;
 }
+
+#dead-goblins, #death-toll{
+    color: white;
+}
+
+#combat-report {
+    color: white;
+    text-align: center;
+}
