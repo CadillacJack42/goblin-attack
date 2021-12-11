@@ -136,13 +136,17 @@ const playerTakeDamage = () => {
 };
 
 const combatReport = (bool, goblin) => {
-    const playerResult = `<p>You successfully attacked ${goblin.name}!</p>`;
-    const goblinResult = `<p>${goblin.name} successfully attacked you!</p>`;
+    const playerSuccessResult = `<p>You successfully attacked ${goblin.name}!</p>`;
+    const playerFailResult = `<p>Your attack against ${goblin.name} Failed!</p>`;
+    const goblinSuccessResult = `<p>${goblin.name} successfully attacked you!</p>`;
+    const goblinFailResult = `<p>${goblin.name}s attack against you Failed!</p>`;
 
     if (bool) {
-        combatReportEl.insertAdjacentHTML('afterbegin', playerResult);
+        combatReportEl.insertAdjacentHTML('afterbegin', goblinFailResult);
+        combatReportEl.insertAdjacentHTML('afterbegin', playerSuccessResult);
     } else {
-        combatReportEl.insertAdjacentHTML('afterbegin', goblinResult);
+        combatReportEl.insertAdjacentHTML('afterbegin', playerFailResult);
+        combatReportEl.insertAdjacentHTML('afterbegin', goblinSuccessResult);
     }
 };
 
