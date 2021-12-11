@@ -2,7 +2,7 @@
 body {
     /* feel free to update these css variables for a quick theme */
     
-    --color1: white;
+    --cherry: rgb(0, 0, 0);
     --color2: white;
     --color3: white;
     --color4: white;
@@ -110,6 +110,23 @@ footer {
     margin: 0;
     text-align: center;
     color: white;
+    text-shadow:
+                1px 0 var(--cherry),
+                0 1px var(--cherry),
+                -1px 0 var(--cherry),
+                0 -1px var(--cherry),
+                1px 1px var(--cherry),
+                -1px -1px var(--cherry),
+                1px -1px var(--cherry),
+                -1px 1px var(--cherry),
+                2px 0 var(--cherry),
+                0 2px var(--cherry),
+                -2px 0 var(--cherry),
+                0 -2px var(--cherry),
+                2px 2px var(--cherry),
+                2px -2px var(--cherry),
+                -2px 2px var(--cherry),
+                -2px -2px var(--cherry);
 }
 
 #left {
@@ -189,6 +206,23 @@ footer {
     margin: 0;
     color: white;
     text-align: center;
+    text-shadow:
+                1px 0 var(--cherry),
+                0 1px var(--cherry),
+                -1px 0 var(--cherry),
+                0 -1px var(--cherry),
+                1px 1px var(--cherry),
+                -1px -1px var(--cherry),
+                1px -1px var(--cherry),
+                -1px 1px var(--cherry),
+                2px 0 var(--cherry),
+                0 2px var(--cherry),
+                -2px 0 var(--cherry),
+                0 -2px var(--cherry),
+                2px 2px var(--cherry),
+                2px -2px var(--cherry),
+                -2px 2px var(--cherry),
+                -2px -2px var(--cherry);
 }
 
 .btns {
@@ -208,4 +242,41 @@ footer {
 #combat-report {
     color: white;
     text-align: center;
+    text-shadow:
+                1px 0 var(--cherry),
+                0 1px var(--cherry),
+                -1px 0 var(--cherry),
+                0 -1px var(--cherry),
+                1px 1px var(--cherry),
+                -1px -1px var(--cherry),
+                1px -1px var(--cherry),
+                -1px 1px var(--cherry),
+                2px 0 var(--cherry),
+                0 2px var(--cherry),
+                -2px 0 var(--cherry),
+                0 -2px var(--cherry),
+                2px 2px var(--cherry),
+                2px -2px var(--cherry),
+                -2px 2px var(--cherry),
+                -2px -2px var(--cherry);
+}
+
+#dead-goblins {
+    text-shadow:
+                1px 0 var(--cherry),
+                0 1px var(--cherry),
+                -1px 0 var(--cherry),
+                0 -1px var(--cherry),
+                1px 1px var(--cherry),
+                -1px -1px var(--cherry),
+                1px -1px var(--cherry),
+                -1px 1px var(--cherry),
+                2px 0 var(--cherry),
+                0 2px var(--cherry),
+                -2px 0 var(--cherry),
+                0 -2px var(--cherry),
+                2px 2px var(--cherry),
+                2px -2px var(--cherry),
+                -2px 2px var(--cherry),
+                -2px -2px var(--cherry);
 }

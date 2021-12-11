@@ -1,5 +1,6 @@
 // import functions and grab DOM elements
 import { goblinArray } from './goblins.js';
+// import { renderGoblin } from './utils.js';
 
 const goblinContainer = document.getElementById('goblin-container');
 
@@ -14,9 +15,7 @@ const combatReportEl = document.getElementById('combat-report');
 
 // let state
 let currentGoblins = [];
-
 let deadGoblins = 0;
-
 let playerHp = 10;
 
 newGoblinBtn.addEventListener('click', () => {
@@ -119,7 +118,7 @@ const makeNewGoblin = () => {
 const killGoblin = (goblin) => {
     goblin.alive = false,
     deadGoblins++;
-    const deathReport = `<p>You have KILLED ${goblin.name}</p>`
+    const deathReport = `<p>You have KILLED ${goblin.name}</p>`;
     combatReportEl.insertAdjacentHTML('afterbegin', deathReport);
 };
 
